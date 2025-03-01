@@ -64,7 +64,31 @@ const primeNumb = (numb, count = 0, dividers = 0) => {
   }
 };
 
+// ------------------------------------------------
+
+function isPrimeNum(n, i = 2) {
+  if (n < 2) return false;
+
+  if (i === n) return true;
+
+  if (n % i === 0) return false;
+
+  return isPrimeNum(n, i + 1);
+}
+
+// console.log(isPrimeNum(11));
+
+// TASK 4
+// const primeNumber = function (number, counter) {
+//   counter -= 1;
+//   if (counter === 1) return true;
+//   return number % counter !== 0 && primeNumber(number, counter);
+// };
+// console.log(primeNumber(11, 11));
+
 // console.log(primeNumb(7))
+
+// -----------------------------------------------------------------
 
 // 5. Напиши функцию checkAge(age, callback), которая принимает возраст и
 // функцию обратного вызова.
@@ -82,20 +106,23 @@ const revStr = (str) => str && str.slice(-1) + revStr(str.slice(0, -1));
 const palindromeCheck = (str) =>
   revStr(str) === str ? "Палиндром" : "НЕ Палиндром";
 
-console.log(palindromeCheck("madam"));
+// console.log(palindromeCheck("madam"));
 
-// ----------------------------Замыкания почему так работают ????------------------------------
+// 7.. Написать функцию, которая возвращает число Фибоначчи по переданному
+// порядковому номеру. Числа Фибоначчи: 1, 1, 2, 3, 5, 8, 13… Ряд основывается на том,
+// что каждое число равно сумме двух предыдущих чисел. Например: порядковый номер
+// 3 – число 2, порядковый номер 6 – число 8.
 
-// function createCounter() {
-//   let count = 0;
+// count - порядковый номер
+// firstNumb - первое число сложения
+// secondNumb - второе число сложения
 
-//   return function () {
-//     count++;
-//     console.log(count);
-//   };
-// }
+const fibonacci = (count, firstNumb = 1, secondNumb = 1) => {
+  let newNumb = firstNumb + secondNumb;
 
-// const counter = createCounter();
-// counter(); // 1
-// counter(); // 2
-// counter(); // 3
+  if (count === 1) return firstNumb;
+
+  return firstNumb + " " + fibonacci(count - 1, secondNumb, newNumb);
+};
+
+// console.log(fibonacci(6));
